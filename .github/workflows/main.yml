@@ -2,8 +2,8 @@ name: 'GitHub Actions Nobook Bot'
 
 on:
   workflow_dispatch: #此命令在Actions的该工作流的右侧添加手动执行选项 Run workflows
-#  schedule:
-#    - cron: '*/10 * * * *'
+  schedule:
+    - cron: '*/10 * * * *'
 jobs:
   nobook-emailbot:
     runs-on: ubuntu-latest
