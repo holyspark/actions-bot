@@ -18,8 +18,15 @@ def run():
 	result=html.split(r'target="_blank" class="xi2">')
 	index = result[1].find('<')
 	user = result[1][0:index]
-	with open("users.txt", 'w', encoding="utf-8") as f:
-		f.writelines(user)
+	with open(r'./users.txt', 'rb') as f:  # 打开文件
+		first_line = f.readline().strip('\n').strip('\r')  # 取第一行
+	if first_line == user:
+		quit
+	else:
+		with open('users.txt', 'r+') as f:
+			text = f.read()        
+			f.seek(0, 0)
+			f.write(user+'\n'+text)
 
 	
 if __name__ == "__main__":
