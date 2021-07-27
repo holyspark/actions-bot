@@ -19,7 +19,7 @@ def run():
 	index = result[1].find('<')
 	user = result[1][0:index]
 	with open(r'./users.txt', 'rb') as f:  # 打开文件
-		first_line = f.readline().strip('\n').strip('\r')  # 取第一行
+		first_line = f.readline().decode("UTF-8").strip('\n').strip('\r')  # 取第一行
 	if first_line == user:
 		quit
 	else:
