@@ -15,7 +15,7 @@ def run():
 		return 0
 	html = data.decode("UTF-8").encode(type)
 
-	result=html.split(r'target="_blank" class="xi2">')
+	result=html.split(r'target="_blank" class="xi2">'.encode())
 	index = result[1].find('<')
 	user = result[1][0:index]
 	with open("users.txt", 'w', encoding="utf-8") as f:
