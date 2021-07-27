@@ -10,4 +10,4 @@ if __name__ == "__main__":
 
     message = "111"
     path = "users.txt"
-    saveEmail(path, message)
+    save(path, message)
