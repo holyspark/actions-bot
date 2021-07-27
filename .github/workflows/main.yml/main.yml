@@ -1,0 +1,32 @@
+name: 'GitHub Actions Nobook Email Bot'
+
+on:
+  push:
+    branches: 
+      - master
+  schedule:
+    - cron: '10 * * * *'
+jobs:
+  nobook-emailbot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: 'Working'
+        run: bash ./nobook/main.sh
+      - name: 'Send mail'
+        uses: dawidd6/action-send-mail@master
+        with:
+          server_address: smtp.163.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Nobook Report
+          body: file://email.txt
+          to: mailtoj@qq.com
+          from: GitHub Actions
+          content_type: text/plain
