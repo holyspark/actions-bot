@@ -1,9 +1,7 @@
 name: 'GitHub Actions Nobook Email Bot'
 
 on:
-  push:
-    branches: 
-      - push
+  workflow_dispatch:
 #  schedule:
 #    - cron: '*/10 * * * *'
 jobs:
