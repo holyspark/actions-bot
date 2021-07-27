@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python csdn-emailbot/spider.py
+python csdn-emailbot/s.py
