@@ -3,7 +3,7 @@ name: 'GitHub Actions Nobook Email Bot'
 on:
   push:
     branches: 
-      - master
+      - push
 #  schedule:
 #    - cron: '*/10 * * * *'
 jobs:
