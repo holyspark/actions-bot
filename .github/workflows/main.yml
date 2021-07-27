@@ -3,22 +3,22 @@ name: 'GitHub Actions Nobook Bot'
 on:
   workflow_dispatch: #此命令在Actions的该工作流的右侧添加手动执行选项 Run workflows
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/10 * * * *' #每10分钟执行一次
 jobs:
-  nobook-emailbot:
+  nobook-bot:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: 'Set up Python'
+    - name: 'Set up Python' #配置python环境
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
     - name: Run s.py
       run: python ./nobook/s.py
-    - name: list
+    - name: list #更新文件列表信息
       run: ls
-    - name: Upload to this repo
+    - name: Upload to this repo #把虚拟环境中生成的文件推送到本仓库，不然工作流结束后虚拟环境被清空，生成的文件就没了
       run: |
         git config --global user.name "holyspark" # 改成Github账号用户名
         git config --global user.email "313304981@qq.com" # 改成GitHub账号的邮箱
