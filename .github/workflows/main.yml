@@ -2,8 +2,8 @@ name: 'GitHub Actions Nobook Email Bot'
 
 on:
   push:
-  schedule:
-    - cron: '60 * * * *'
+#  schedule:
+#    - cron: '*/10 * * * *'
 jobs:
   nobook-emailbot:
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
         with:
           server_address: smtp.163.com
           server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }}
+          username: ${{ secrets.MAIL_USERNAME }} #在setting-secrets配置加密字符串
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: Nobook NewUser
           body: file://email.txt
