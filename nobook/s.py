@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
-import urllib 
-import urllib2
+
+import urllib.request
 import sys
 
 type = sys.getfilesystemencoding()
 def run():
 	url = "https://forum.nobook.com"
 	headers = {'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}
-	req = urllib2.Request(url=url,headers=headers)
+	req = urllib.request.Request(url=url,headers=headers)
 	try:
-		data = urllib2.urlopen(req).read()
+		data = urllib.request.urlopen(req).read()
 	except Exception as e:
 		return 0
 	html = data.decode("UTF-8").encode(type)
