@@ -8,23 +8,25 @@ jobs:
   nobook-emailbot:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: 'Set up Python'
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.7
-      - name: 'Working'
-        run: bash ./nobook/main.sh
-      - name: 'Send mail'
-        uses: dawidd6/action-send-mail@master
-        with:
-          server_address: smtp.163.com
-          server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }} #在setting-secrets配置加密字符串
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Nobook NewUser
-          body: file://email.txt
-          to: mailtoj@qq.com
-          from: GitHub Actions
-          content_type: text/plain
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: 'Set up Python'
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Run s.py
+      run: python ./nobook/s.py
+    - name: list
+      run: ls
+    - name: Upload to this repo
+      run: |
+        git config --global user.name "holyspark" # 改成Github账号用户名
+        git config --global user.email "313304981@qq.com" # 改成GitHub账号的邮箱
+        git add "user.txt" && echo "Git Added" # 参考: https://stackoverflow.com/questions/25083290/git-add-error-unknown-switch
+        git commit -m 'upload s result' && echo "Git Committed"
+        git push -u origin master && echo "Git Pushed Origin" # master改成存放的分支
+    - name: Failure test
+      if: failure()
+      run: | 
+        ls
+        echo "Error on running!"
