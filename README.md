@@ -1,3 +1,0 @@
-# nobook
-hg
-m
