@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 
-def saveEmail(email_path, message):
-    with open(email_path, 'w', encoding="utf-8") as email:
-        email.writelines(message)
+def save(path, message):
+    with open(path, 'w', encoding="utf-8") as f:
+        f.writelines(message)
 
 	
 if __name__ == "__main__":
 
     message = "111"
-    email_path = "email.txt"
-    saveEmail(email_path, message)
+    path = "users.txt"
+    saveEmail(path, message)
