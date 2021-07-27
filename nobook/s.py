@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 
-user="111"
-with open('email.txt', 'r+') as f:
-			text = f.read()        
-			f.seek(0, 0)
-			f.write(user+'\n'+text)
+
+def saveEmail(email_path, message):
+    with open(email_path, 'w', encoding="utf-8") as email:
+        email.writelines(message)
+
+	
+if __name__ == "__main__":
+
+    message = "111"
+    email_path = "email.txt"
+    saveEmail(email_path, message)
