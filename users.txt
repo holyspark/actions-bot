@@ -1,3 +1,4 @@
+chem,is,try
 古祠-化学
 雪融寒冰
 NoBook！
